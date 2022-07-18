@@ -25,14 +25,10 @@ namespace CCred
             }
         }
 
-        public static string GetHash(string input)
+        public static string GetHash<T>(string input, string salt) where T : HashAlgorithm
         {
-            return GetHash<SHA384>(input, Encoding.Default);
-        }
-
-        public static string GetHash<T>(string input) where T : HashAlgorithm
-        {
-            return GetHash<T>(input, Encoding.Default);
+            input = Seasoning(input, salt);
+            return GetHash<T>(input, Encoding.UTF8);
         }
 
         public static string GetHash<T>(string input, string salt, Encoding encoding) where T : HashAlgorithm
@@ -41,10 +37,31 @@ namespace CCred
             return GetHash<T>(input, encoding);
         }
 
-        public static string GetHash<T>(string input, string salt) where T : HashAlgorithm
+        public static string GetHash<T>(string input) where T : HashAlgorithm
+        {
+            return GetHash<T>(input, Encoding.UTF8);
+        }
+
+        public static string GetHash(string input, Encoding encoding)
+        {
+            return GetHash<SHA384>(input, encoding);
+        }
+
+        public static string GetHash(string input, string salt)
         {
             input = Seasoning(input, salt);
-            return GetHash<T>(input, Encoding.Default);
+            return GetHash<SHA384>(input, Encoding.UTF8);
+        }
+
+        public static string GetHash(string input, string salt, Encoding encoding)
+        {
+            input = Seasoning(input, salt);
+            return GetHash<SHA384>(input, encoding);
+        }
+
+        public static string GetHash(string input)
+        {
+            return GetHash<SHA384>(input, Encoding.UTF8);
         }
 
         public static string GenerateSalt(int length)
