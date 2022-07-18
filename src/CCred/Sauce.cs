@@ -7,7 +7,6 @@ namespace CCred
 {
     public static class Sauce
     {
-
         public static string GetHash<T>(string input, Encoding encoding) where T : HashAlgorithm
         {
             using(T hashObj = (T) HashAlgorithm.Create(typeof(T).ToString()))
@@ -38,13 +37,13 @@ namespace CCred
 
         public static string GetHash<T>(string input, string salt, Encoding encoding) where T : HashAlgorithm
         {
-            input = string.Concat(input, salt);
+            input = Seasoning(input, salt);
             return GetHash<T>(input, encoding);
         }
 
         public static string GetHash<T>(string input, string salt) where T : HashAlgorithm
         {
-            input = string.Concat(input, salt);
+            input = Seasoning(input, salt);
             return GetHash<T>(input, Encoding.Default);
         }
 
