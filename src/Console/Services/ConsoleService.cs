@@ -20,6 +20,13 @@ public class ConsoleService : IConsoleService
     {
         _logger.LogInformation("Starting...");
 
-        var x = CCred.Sauce.GetHash<SHA384>("password", Encoding.UTF8);
+        // var x = CCred.Sauce.GetHash<SHA384>("password", Encoding.UTF8);
+        var salt = CCred.Sauce.GenerateSalt(8);
+        var password = "VeryLongPassword";
+        var x = CCred.Sauce.Seasoning(password, salt);
+        var z = CCred.Sauce.GetHash(x);
+        _logger.LogInformation($"Salt: {salt}");
+        _logger.LogInformation($"Seasoning: {x}");
+        _logger.LogInformation($"CCred: {z}");
     }
 }

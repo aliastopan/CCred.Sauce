@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -74,6 +75,40 @@ namespace CCred
             }
 
             return new string(salt);
+        }
+
+        public static string Seasoning(string former, string latter)
+        {
+            List<char[]> inputs = new List<char[]>()
+            {
+                former.ToCharArray(),
+                latter.ToCharArray()
+            };
+
+            if(latter.Length > former.Length)
+            {
+                inputs.Reverse();
+            }
+
+            StringBuilder output = new StringBuilder();
+            int pointer = 0;
+
+            for(int i = 0; i < (inputs[0].Length * 2) - 1; i++)
+            {
+                if(i % 2 == 0)
+                {
+                    output.Append(inputs[0][i/2]);
+                }
+                else
+                {
+                    output.Append(inputs[1][pointer]);
+                    pointer = pointer + 1 >= inputs[1].Length
+                        ? 0
+                        : pointer + 1;
+                }
+            }
+
+            return output.ToString();
         }
     }
 }
