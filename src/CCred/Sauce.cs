@@ -64,6 +64,30 @@ namespace CCred
             return GetHash<SHA384>(input, Encoding.UTF8);
         }
 
+        public static bool Verify(string input, string salt, string saltyHash)
+        {
+            input = GetHash(input, salt);
+            return string.Equals(input, saltyHash);
+        }
+
+        public static bool Verify(string input, string salt, string saltyHash, Encoding encoding)
+        {
+            input = GetHash(input, salt, encoding);
+            return string.Equals(input, saltyHash);
+        }
+
+        public static bool Verify<T>(string input, string salt, string saltyHash) where T : HashAlgorithm
+        {
+            input = GetHash<T>(input, salt);
+            return string.Equals(input, saltyHash);
+        }
+
+        public static bool Verify<T>(string input, string salt, string saltyHash, Encoding encoding) where T : HashAlgorithm
+        {
+            input = GetHash<T>(input, salt, encoding);
+            return string.Equals(input, saltyHash);
+        }
+
         public static string GenerateSalt(int length)
         {
             if(length <= 0)
