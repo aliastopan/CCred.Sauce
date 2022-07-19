@@ -22,13 +22,14 @@ public class ConsoleService : IConsoleService
 
         var salt = CCred.Sauce.GenerateSalt(8);
         var password = "VeryLongPassword";
-        var seasonedPassword = CCred.Sauce.Seasoning(password, salt);
-        var salyPassword = CCred.Sauce.GetHash(seasonedPassword);
+        var storedPassword = CCred.Sauce.Seasoning(password, salt);
+        var salyPassword = CCred.Sauce.GetHash(storedPassword);
+
         _logger.LogInformation($"Salt: {salt}");
-        _logger.LogInformation($"Seasoning: {seasonedPassword}");
+        _logger.LogInformation($"Seasoning: {storedPassword}");
         _logger.LogInformation($"CCred: {salyPassword}");
 
-        var verify = CCred.Sauce.Verify(password, salt, salyPassword);
+        var verify = CCred.Sauce.Verify<SHA512>(password, salt, salyPassword);
         _logger.LogInformation($"Verify: {verify}");
     }
 }

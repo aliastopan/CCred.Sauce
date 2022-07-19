@@ -64,52 +64,52 @@ namespace CCred
             return GetHash<SHA384>(input, Encoding.UTF8);
         }
 
-        public static bool Verify(string input, string hashedInput)
+        public static bool Verify(string rawInput, string saltyInput)
         {
-            input = GetHash(input);
-            return string.Equals(input, hashedInput);
+            var hashedInput = GetHash(rawInput);
+            return string.Equals(hashedInput, saltyInput);
         }
 
-        public static bool Verify(string input, string hashedInput, Encoding encoding)
+        public static bool Verify(string rawInput, string saltyInput, Encoding encoding)
         {
-            input = GetHash(input, encoding);
-            return string.Equals(input, hashedInput);
+            var hashedInput = GetHash(rawInput, encoding);
+            return string.Equals(hashedInput, saltyInput);
         }
 
-        public static bool Verify(string input, string salt, string hashedInput)
+        public static bool Verify(string rawInput, string salt, string saltyInput)
         {
-            input = GetHash(input, salt);
-            return string.Equals(input, hashedInput);
+            var hashedInput = GetHash(rawInput, salt);
+            return string.Equals(hashedInput, saltyInput);
         }
 
-        public static bool Verify(string input, string salt, string hashedInput, Encoding encoding)
+        public static bool Verify(string rawInput, string salt, string saltyInput, Encoding encoding)
         {
-            input = GetHash(input, salt, encoding);
-            return string.Equals(input, hashedInput);
+            var hashedInput = GetHash(rawInput, salt, encoding);
+            return string.Equals(hashedInput, saltyInput);
         }
 
-        public static bool Verify<T>(string input, string hashedInput) where T : HashAlgorithm
+        public static bool Verify<T>(string rawInput, string saltyInput) where T : HashAlgorithm
         {
-            input = GetHash<T>(input);
-            return string.Equals(input, hashedInput);
+            var hashedInput = GetHash<T>(rawInput);
+            return string.Equals(hashedInput, saltyInput);
         }
 
-        public static bool Verify<T>(string input, string hashedInput, Encoding encoding) where T : HashAlgorithm
+        public static bool Verify<T>(string rawInput, string saltyInput, Encoding encoding) where T : HashAlgorithm
         {
-            input = GetHash<T>(input, encoding);
-            return string.Equals(input, hashedInput);
+            var hashedInput = GetHash<T>(rawInput, encoding);
+            return string.Equals(hashedInput, saltyInput);
         }
 
-        public static bool Verify<T>(string input, string salt, string hashedInput) where T : HashAlgorithm
+        public static bool Verify<T>(string rawInput, string salt, string saltyInput) where T : HashAlgorithm
         {
-            input = GetHash<T>(input, salt);
-            return string.Equals(input, hashedInput);
+            var hashedInput = GetHash<T>(rawInput, salt);
+            return string.Equals(hashedInput, saltyInput);
         }
 
-        public static bool Verify<T>(string input, string salt, string hashedInput, Encoding encoding) where T : HashAlgorithm
+        public static bool Verify<T>(string rawInput, string salt, string saltyInput, Encoding encoding) where T : HashAlgorithm
         {
-            input = GetHash<T>(input, salt, encoding);
-            return string.Equals(input, hashedInput);
+            var hashedInput = GetHash<T>(rawInput, salt, encoding);
+            return string.Equals(hashedInput, saltyInput);
         }
 
         public static string GenerateSalt(int length)
