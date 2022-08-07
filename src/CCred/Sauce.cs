@@ -119,7 +119,7 @@ namespace CCred
                 throw new InvalidOperationException();
             }
 
-            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXY";
+            string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string numeric = "0123456789";
             var rng = new Random();
             char[] salt = new char[length];
