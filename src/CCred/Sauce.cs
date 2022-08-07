@@ -112,9 +112,9 @@ namespace CCred
             return string.Equals(input, hashedInput);
         }
 
-        public static string GenerateGibberish(int length)
+        public static string GenerateGibberish(int length, string extraChars = "")
         {
-            return Chef.CookString(length);
+            return Chef.CookString(length, extraChars);
         }
 
         public static string GenerateSalt(int length)

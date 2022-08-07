@@ -6,7 +6,7 @@ namespace CCred
 {
     internal static class Chef
     {
-        internal static string CookString(int length)
+        internal static string CookString(int length, string extraChars = "")
         {
             if(length <= 0)
             {
@@ -16,23 +16,32 @@ namespace CCred
             string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string numeric = "0123456789";
             var rng = new Random();
-            char[] salt = new char[length];
+            char[] chars = new char[length];
 
-            for (int i = 0; i < length; i++)
+            for(int i = 0; i < length; i++)
             {
-                if(rng.Next(2) < 1)
+                if(rng.Next(2) > 0)
                 {
-                    salt[i] = alphabet[rng.Next(alphabet.Length - 1)];
-                    salt[i] = rng.Next(2) > 0
-                        ? salt[i] = Char.ToLower(salt[i])
-                        : salt[i];
+                    chars[i] = alphabet[rng.Next(alphabet.Length)];
+                    chars[i] = rng.Next(2) > 0
+                        ? chars[i] = Char.ToLower(chars[i])
+                        : chars[i];
                     continue;
                 }
 
-                salt[i] = numeric[rng.Next(numeric.Length - 1)];
+                chars[i] = numeric[rng.Next(numeric.Length)];
             }
 
-            return new string(salt);
+            if(extraChars?.Length == 0)
+                return new string(chars);
+
+            for(int i = 0; i < length; i++)
+            {
+                if(rng.Next(4) == 0)
+                    chars[i] = extraChars[rng.Next(extraChars.Length)];
+            }
+
+            return new string(chars);
         }
 
         internal static string Seasoning(string former, string latter)

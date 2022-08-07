@@ -30,7 +30,10 @@ public class ConsoleService : IConsoleService
         var verify = CCred.Sauce.Verify<SHA512>(password, salt, saltyPassword);
         _logger.LogInformation("Verify: {verify}", verify);
 
-        var token = CCred.Sauce.GenerateSalt(32);
-        _logger.LogInformation("Token: {token}", token);
+        for (int i = 0; i < 10; i++)
+        {
+            var token = CCred.Sauce.GenerateGibberish(32, "#$?._*-");
+            _logger.LogInformation("Token: {token}", token);
+        }
     }
 }
