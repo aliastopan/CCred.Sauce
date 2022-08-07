@@ -1,5 +1,7 @@
 # CCred.Sauce
 
+Pardon the pun.
+
 ## Unambitious and straightforward hash library for .NET
 
 

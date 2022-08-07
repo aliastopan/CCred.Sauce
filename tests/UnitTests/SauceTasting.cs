@@ -5,8 +5,8 @@ namespace UnitTests;
 
 public class SauceTasting
 {
-    private string _password = "VeryLongPassword";
-    private string _salt = CCred.Sauce.GenerateSalt(8);
+    private readonly string _password = "VeryLongPassword";
+    private readonly string _salt = CCred.Sauce.GenerateSalt(8);
 
     [Theory]
     [InlineData("verylongpassword")]

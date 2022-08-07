@@ -16,7 +16,7 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 IHost host = Host.CreateDefaultBuilder()
-    .ConfigureServices((context, services) => {
+    .ConfigureServices((_, services) => {
         services.AddTransient<IConsoleService, ConsoleService>();
     })
     .UseSerilog()
