@@ -29,5 +29,8 @@ public class ConsoleService : IConsoleService
 
         var verify = CCred.Sauce.Verify<SHA512>(password, salt, saltyPassword);
         _logger.LogInformation("Verify: {verify}", verify);
+
+        var token = CCred.Sauce.GenerateSalt(32);
+        _logger.LogInformation("Token: {token}", token);
     }
 }
