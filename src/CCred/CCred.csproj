@@ -5,15 +5,15 @@
     <AssemblyName>CCred.Sauce</AssemblyName>
     <PackageId>CCred.Sauce</PackageId>
     <Description>Unambitious and straightforward hash library for .NET</Description>
-    <Version>1.2.1</Version>
+    <Version>1.2.2</Version>
     <Authors>Taufan Augusta</Authors>
     <Copyright>Copyright 2022 (c) Taufan Augusta. No Rights Reserved.</Copyright>
     <PackageTags>cryptography, hash password, salt</PackageTags>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/einharan/CCred.Sauce</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/aliastopan/CCred.Sauce</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
-    <RepositoryURL>https://github.com/einharan/CCred.Sauce</RepositoryURL>
+    <RepositoryURL>https://github.com/aliastopan/CCred.Sauce</RepositoryURL>
 
     <!--SourceLink-->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
