@@ -1,8 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-using Console.Services;
+using SampleTests;
 
 IConfigurationRoot configuration = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
@@ -15,13 +14,8 @@ Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .CreateLogger();
 
-IHost host = Host.CreateDefaultBuilder()
-    .ConfigureServices((_, services) => {
-        services.AddTransient<IConsoleService, ConsoleService>();
-    })
+Host.CreateDefaultBuilder()
     .UseSerilog()
     .Build();
 
-var app = ActivatorUtilities.CreateInstance<ConsoleService>(host.Services);
-
-app.Run();
+Sampling.Run();

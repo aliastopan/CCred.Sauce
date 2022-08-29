@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Console</RootNamespace>
-    <AssemblyName>Console</AssemblyName>
+    <RootNamespace>SampleTests</RootNamespace>
+    <AssemblyName>SampleTests</AssemblyName>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -17,6 +17,6 @@
     <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CCred\CCred.csproj" />
+    <ProjectReference Include="..\..\src\CCred\CCred.csproj" />
   </ItemGroup>
 </Project>
